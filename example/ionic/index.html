@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Refresher for Ionic Example</title>
+
+    <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="../../lib/styles.css" rel="stylesheet">
+    <link href="../../lib/extras.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+
+    <script src="js/app.js"></script>
+    <script src="../../lib/component.js"></script>
+  </head>
+  <body ng-app="example">
+
+    <ion-pane ng-controller="MainController">
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Refresher for Ionic Example ({{items.length}} items)</h1>
+      </ion-header-bar>
+      <ion-content overflow-scroll="true">
+        <!--<mos-refresher 
+        on-refresh="refresh()" distance="60" resistance="" overflow="80" start-pos=""
+        mos-spinning-icon icon-size="50" icon-refresh-color="#F00" 
+        on-drag-start="onDragStart()" on-drag="onDrag(distance, percentage)" on-release="onDragEnd()" on-finish="onEnd()" 
+        on-refresh-change="onRefreshChange(willRefresh)" on-hiding="onHiding()">
+        </mos-refresher>-->
+        <!--<mos-refresher 
+          on-refresh="refresh()" distance="60" resistance="" overflow="80" start-pos=""
+          mos-arrow icon-size="30" pull-text="Tire para actualizar" release-text="Suelte para actualizar" loading-text="Cargando"
+          on-drag-start="onDragStart()" on-drag="onDrag(distance, percentage)" on-release="onDragEnd()" on-finish="onEnd()" 
+          on-refresh-change="onRefreshChange(willRefresh)" on-hiding="onHiding()">
+        </mos-refresher>-->
+        <mos-refresher 
+          on-refresh="refresh()" distance="80" resistance="" overflow="80" start-pos=""
+          mos-animated-arrow
+          on-drag-start="onDragStart()" on-drag="onDrag(distance, percentage)" on-release="onDragEnd()" on-finish="onEnd()" 
+          on-refresh-change="onRefreshChange(willRefresh)" on-hiding="onHiding()">
+        </mos-refresher>
+        <ion-list>
+          <ion-item ng-repeat="item in items">
+            Item #{{item}}
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>

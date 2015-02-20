@@ -1,0 +1,34 @@
+mos-refresher.mos-arrow .icon {
+	margin: 4px; 
+} 
+mos-refresher.mos-arrow .mos-icon {
+	-webkit-transition: -webkit-transform .25s ease; 
+	display: inline-block;
+}
+mos-refresher.mos-arrow .mos-rotate {
+	display: inline-block;
+}
+
+mos-refresher.mos-arrow .mos-content {
+	color: #000;
+    background-color: #ACACAC;
+    border-style: solid;
+    border-color: #999;
+    border-width: 1px;
+    padding: 5px;
+    border-radius: 10px;
+}
+mos-refresher.mos-arrow.mos-refresh .mos-icon { 
+	-webkit-transform: rotate(180deg);
+}
+/*
+mos-refresher.mos-arrow .mos-refresher-loading { 
+	display:none; 
+} 
+mos-refresher.mos-arrow.mos-refreshing .mos-refresher-loading { 
+	display:block; 
+} 
+mos-refresher.mos-arrow.mos-refreshing .mos-refresher-interact { 
+	display:none; 
+}
+*/

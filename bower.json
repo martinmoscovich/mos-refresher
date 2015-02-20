@@ -1,0 +1,27 @@
+{
+  "name": "mos-refresher",
+  "version": "0.0.1",
+  "authors": [
+    "Martin Moscovich <martinmoscovich@gmail.com>"
+  ],
+  "description": "A Pull-To-Refresh component for the Ionic Framework",
+  "main": "mos-refresher.min.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "mobile",
+    "refresh",
+    "angular",
+    "ionic"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
