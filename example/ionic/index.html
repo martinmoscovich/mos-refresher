@@ -7,8 +7,7 @@
 
     <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link href="../../lib/styles.css" rel="stylesheet">
-    <link href="../../lib/extras.css" rel="stylesheet">
+    <link href="../../dist/mos-refresher.bundle.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -17,13 +16,10 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.min.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
-
     <!-- your app's js -->
 
     <script src="js/app.js"></script>
-    <script src="../../lib/component.js"></script>
+    <script src="../../dist/mos-refresher.bundle.js"></script>
   </head>
   <body ng-app="example">
 
@@ -46,7 +42,7 @@
         </mos-refresher>-->
         <mos-refresher 
           on-refresh="refresh()" distance="80" resistance="" overflow="80" start-pos=""
-          mos-animated-arrow
+          mos-arrow icon-size="30" pull-text="Tire para actualizar" release-text="Suelte para actualizar" loading-text="Cargando"
           on-drag-start="onDragStart()" on-drag="onDrag(distance, percentage)" on-release="onDragEnd()" on-finish="onEnd()" 
           on-refresh-change="onRefreshChange(willRefresh)" on-hiding="onHiding()">
         </mos-refresher>

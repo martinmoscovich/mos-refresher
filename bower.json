@@ -1,14 +1,15 @@
 {
   "name": "mos-refresher",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "authors": [
     "Martin Moscovich <martinmoscovich@gmail.com>"
   ],
-  "description": "A Pull-To-Refresh component for the Ionic Framework",
-  "main": "mos-refresher.min.js",
-  "moduleType": [
-    "globals"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/martinmoscovich/mos-refresher.git"
+  },
+  "description": "A customizable Pull-To-Refresh component for the Ionic Framework",
+  "main": ["dist/mos-refresher.js", "dist/mos-refresher.css"],
   "keywords": [
     "mobile",
     "refresh",
@@ -22,6 +23,8 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "example",
+    "package.json",
+    "lib"
   ]
 }

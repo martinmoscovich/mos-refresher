@@ -1,0 +1,63 @@
+$transition: .25s ease;
+$rotation-time: 0.5s;
+
+.mos-animate {
+	-webkit-transition: -webkit-transform $transition;
+}
+
+mos-refresher {
+	z-index: 999;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	opacity: 0.4;
+
+	.mos-content {
+		width: auto;
+		height: auto;
+		display: inline-block;
+	}
+
+
+	&.mos-dragging {
+		-webkit-transition: none;
+	}
+
+	&.mos-refresh {
+		opacity: 1;
+	}
+
+
+
+	&.mos-refreshing, &.mos-hiding {
+		@extend .mos-animate;
+	}
+
+	 
+	&.mos-hidden {
+		-webkit-transition: none;
+		display: none;
+	}
+
+	&.mos-refreshing .mos-rotate {
+		@extend .mos-animate;
+		-webkit-animation: rotating $rotation-time linear infinite;
+	}
+
+
+	&.mos-hiding .mos-rotate {
+		@extend .mos-animate;
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+@-webkit-keyframes rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
