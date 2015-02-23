@@ -3,55 +3,125 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>Refresher for Ionic Example</title>
+    <title></title>
 
     <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="../../dist/mos-refresher.bundle.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.min.js"></script>
-
-    <!-- your app's js -->
+    <script src="../../dist/mos-refresher.bundle.js"></script>
 
     <script src="js/app.js"></script>
-    <script src="../../dist/mos-refresher.bundle.js"></script>
+    <script src="js/controllers.js"></script>
   </head>
   <body ng-app="example">
+   
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+   
+    <ion-nav-view></ion-nav-view>
 
-    <ion-pane ng-controller="MainController">
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Refresher for Ionic Example ({{items.length}} items)</h1>
-      </ion-header-bar>
-      <ion-content overflow-scroll="true">
-        <!--<mos-refresher 
-        on-refresh="refresh()" distance="60" resistance="" overflow="80" start-pos=""
-        mos-spinning-icon icon-size="50" icon-refresh-color="#F00" 
-        on-drag-start="onDragStart()" on-drag="onDrag(distance, percentage)" on-release="onDragEnd()" on-finish="onEnd()" 
-        on-refresh-change="onRefreshChange(willRefresh)" on-hiding="onHiding()">
-        </mos-refresher>-->
-        <!--<mos-refresher 
-          on-refresh="refresh()" distance="60" resistance="" overflow="80" start-pos=""
-          mos-arrow icon-size="30" pull-text="Tire para actualizar" release-text="Suelte para actualizar" loading-text="Cargando"
-          on-drag-start="onDragStart()" on-drag="onDrag(distance, percentage)" on-release="onDragEnd()" on-finish="onEnd()" 
-          on-refresh-change="onRefreshChange(willRefresh)" on-hiding="onHiding()">
-        </mos-refresher>-->
-        <mos-refresher 
-          on-refresh="refresh()" distance="80" resistance="" overflow="80" start-pos=""
-          mos-arrow icon-size="30" pull-text="Tire para actualizar" release-text="Suelte para actualizar" loading-text="Cargando"
-          on-drag-start="onDragStart()" on-drag="onDrag(distance, percentage)" on-release="onDragEnd()" on-finish="onEnd()" 
-          on-refresh-change="onRefreshChange(willRefresh)" on-hiding="onHiding()">
-        </mos-refresher>
-        <ion-list>
-          <ion-item ng-repeat="item in items">
-            Item #{{item}}
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-pane>
+    <!-- TEMPLATES -->
+    <script type="text/ng-template" id="templates/tabs.html">
+       <ion-tabs class="tabs-icon-top tabs-color-active-positive">
+          <ion-tab title="Spinning Icon" icon-off="ion-ios7-chatboxes-outline" icon-on="ion-ios7-chatboxes" href="#/refresher/spinning">
+            <ion-nav-view name="refresher-spinning"></ion-nav-view>
+          </ion-tab>
+
+          <ion-tab title="Arrow" icon-off="ion-ios7-heart-outline" icon-on="ion-ios7-heart" href="#/refresher/arrow">
+            <ion-nav-view name="refresher-arrow"></ion-nav-view>
+          </ion-tab>
+
+
+          <ion-tab title="Animation" icon-off="ion-ios7-gear-outline" icon-on="ion-ios7-gear" href="#/refresher/animation">
+            <ion-nav-view name="refresher-animation"></ion-nav-view>
+          </ion-tab>
+
+          <ion-tab title="Custom" icon-off="ion-ios7-pulse" icon-on="ion-ios7-pulse-strong" href="#/refresher/custom">
+            <ion-nav-view name="refresher-custom"></ion-nav-view>
+          </ion-tab>
+        </ion-tabs>
+    </script>
+
+     
+    <script type="text/ng-template" id="templates/refresher-spinning.html">
+      <ion-view view-title="Refresher for Ionic Example - Spinning Icon Addon ({{items.length}} items)">
+        <ion-content overflow-scroll="true">
+          <mos-refresher 
+            on-refresh="refresh()"
+            mos-spinning-icon icon-size="50" icon-refresh-color="#F00" >
+          </mos-refresher>
+          
+          <ion-list>
+            <ion-item ng-repeat="item in items">
+              Item #{{item}}
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="templates/refresher-arrow.html">
+      <ion-view view-title="Refresher for Ionic Example - Arrow Addon ({{items.length}} items)">
+        <ion-content overflow-scroll="true">
+          <mos-refresher 
+            on-refresh="refresh()"
+            mos-arrow icon-size="30" 
+            >
+            <!-- pull-text="Tire para actualizar" release-text="Suelte para actualizar" loading-text="Cargando" -->
+          </mos-refresher>
+          <ion-list>
+            <ion-item ng-repeat="item in items">
+              Item #{{item}}
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="templates/refresher-animation.html">
+      <ion-view view-title="Refresher for Ionic Example - Canvas Animation Addon ({{items.length}} items)">
+        <ion-content overflow-scroll="true">
+          <mos-refresher 
+            on-refresh="refresh()" 
+            mos-animated-arrow>
+          </mos-refresher>
+          <ion-list>
+            <ion-item ng-repeat="item in items">
+              Item #{{item}}
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="templates/refresher-custom.html">
+      <style>
+        mos-refresher img {
+          width: 50px;
+          height: 50px;
+        }
+      </style>
+      <ion-view view-title="Refresher for Ionic Example - Custom ({{items.length}} items)">
+        <ion-content overflow-scroll="true">
+            <mos-refresher id="custom"
+                on-refresh="refresh()" distance="80" resistance="" overflow="80" start-pos=""
+                on-drag-start="onDragStart()" on-drag="onDrag(distance, percentage)" on-release="onRelease()" on-finish="onFinish()" 
+                on-refresh-change="onRefreshChange(willRefresh)" on-hiding="onHiding()">
+                  <div><img class="mos-rotate" src="img/ionic.png"> <span>Image Refresher Example</span></div>
+              </mos-refresher>
+              <ion-list>
+                <ion-item ng-repeat="item in items">
+                  Item #{{item}}
+                </ion-item>
+              </ion-list>
+            </ion-content>
+      </ion-view>
+    </script>
+
+
   </body>
 </html>
