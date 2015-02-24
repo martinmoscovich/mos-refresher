@@ -52,9 +52,9 @@ gulp.task('sass:core', function() {
 gulp.task('sass:bundle', function() {
 	return gulp.src([INPUT + 'styles.scss', INPUT + '**/*.scss'])
 	.pipe(plumber())
-	.pipe(plugins.sass())
 	.pipe(plugins.concat("mos-refresher.bundle.css"))
-    .pipe(gulp.dest(OUTPUT));
+    .pipe(plugins.sass())
+	.pipe(gulp.dest(OUTPUT));
 });
 
 /**

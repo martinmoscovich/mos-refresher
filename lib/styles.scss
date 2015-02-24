@@ -1,8 +1,31 @@
 $transition: .25s ease;
 $rotation-time: 0.5s;
 
-.mos-animate {
+@mixin rotate($d) {
+  -webkit-transform: rotate($d);
+     -moz-transform: rotate($d);
+      -ms-transform: rotate($d);
+          transform: rotate($d);
+}
+
+@mixin transform_transition() {
 	-webkit-transition: -webkit-transform $transition;
+	-moz-transition: -moz-transform $transition;
+	-ms-transition: -ms-transform $transition;
+	transition: transform $transition;
+}
+
+@mixin no_transition() {
+	-webkit-transition: none;
+	-moz-transition: none;
+	-ms-transition: none;
+	transition: none;
+}
+
+
+.mos-animate {
+	//-webkit-transition: -webkit-transform $transition;
+	@include transform_transition();
 }
 
 mos-refresher {
@@ -22,7 +45,8 @@ mos-refresher {
 
 
 	&.mos-dragging {
-		-webkit-transition: none;
+		//-webkit-transition: none;
+		@include no_transition();
 	}
 
 	&.mos-refresh {
@@ -37,27 +61,34 @@ mos-refresher {
 
 	 
 	&.mos-hidden {
-		-webkit-transition: none;
+		//-webkit-transition: none;
+		@include no_transition();
 		display: none;
 	}
 
 	&.mos-refreshing .mos-rotate {
 		@extend .mos-animate;
 		-webkit-animation: rotating $rotation-time linear infinite;
+		moz-animation: rotating $rotation-time linear infinite;
+		ms-animation: rotating $rotation-time linear infinite;
+		animation: rotating $rotation-time linear infinite;
 	}
 
 
 	&.mos-hiding .mos-rotate {
 		@extend .mos-animate;
-		-webkit-transform: rotate(0deg);
+		@include rotate(0deg)
+		//-webkit-transform: rotate(0deg);
 	}
 }
 
-@-webkit-keyframes rotating {
+@keyframes rotating {
     from{
-        -webkit-transform: rotate(0deg);
+    	@include rotate(0deg)
+        //-webkit-transform: rotate(0deg);
     }
     to{
-        -webkit-transform: rotate(360deg);
+    	@include rotate(360deg)
+        //-webkit-transform: rotate(360deg);
     }
 }

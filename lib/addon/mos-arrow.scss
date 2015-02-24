@@ -4,7 +4,8 @@ mos-refresher.mos-arrow {
 	} 
 
 	.mos-icon {
-		-webkit-transition: -webkit-transform .25s ease; 
+		//-webkit-transition: -webkit-transform .25s ease; 
+		@include transform_transition();
 	}
 
 	.mos-rotate, .mos-icon {
@@ -22,6 +23,7 @@ mos-refresher.mos-arrow {
 	}
 
 	&.mos-refresh .mos-icon { 
-		-webkit-transform: rotate(180deg);
+		//-webkit-transform: rotate(180deg);
+		@include rotate(180deg);
 	}
 }
