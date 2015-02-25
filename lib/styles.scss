@@ -10,16 +10,14 @@ $rotation-time: 0.5s;
 
 @mixin transform_transition() {
 	-webkit-transition: -webkit-transform $transition;
-	-moz-transition: -moz-transform $transition;
-	-ms-transition: -ms-transform $transition;
-	transition: transform $transition;
+	   -moz-transition: -moz-transform $transition;
+			transition: transform $transition -ms-transform $transition;
 }
 
 @mixin no_transition() {
 	-webkit-transition: none;
-	-moz-transition: none;
-	-ms-transition: none;
-	transition: none;
+	   -moz-transition: none;
+			transition: none;
 }
 
 
@@ -69,9 +67,8 @@ mos-refresher {
 	&.mos-refreshing .mos-rotate {
 		@extend .mos-animate;
 		-webkit-animation: rotating $rotation-time linear infinite;
-		moz-animation: rotating $rotation-time linear infinite;
-		ms-animation: rotating $rotation-time linear infinite;
-		animation: rotating $rotation-time linear infinite;
+		   -moz-animation: rotating $rotation-time linear infinite;
+				animation: rotating $rotation-time linear infinite;
 	}
 
 
@@ -82,13 +79,22 @@ mos-refresher {
 	}
 }
 
-@keyframes rotating {
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+@include keyframes(rotating) {
     from{
     	@include rotate(0deg)
-        //-webkit-transform: rotate(0deg);
     }
     to{
     	@include rotate(360deg)
-        //-webkit-transform: rotate(360deg);
     }
 }
