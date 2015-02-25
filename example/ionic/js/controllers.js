@@ -6,14 +6,6 @@ angular.module('example.controllers', [])
     $scope.items.push(i);
   }
 
-  /*function getClasses() {
-    var classes = [];
-    document.getElementById("custom").className.split(" ").forEach(function( cls ) {
-      if(cls.indexOf('mos-') === 0) classes.push(cls);
-    });
-    return classes;
-  }*/
-
   $scope.refresh = function() {
 
     var defer = $q.defer();
