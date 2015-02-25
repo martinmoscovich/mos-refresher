@@ -15,7 +15,7 @@ angular.module('example', ['ionic', 'example.controllers', 'mos.mobile.component
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  var examples = ['spinning', 'arrow', 'animation', 'custom'];
+  var examples = ['spinning', 'custom'];
 
   
 
