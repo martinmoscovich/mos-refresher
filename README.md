@@ -9,6 +9,10 @@ The behavior and looks can be customized using just HTML/CSS (for simple cases) 
 
 It comes with a few out-of-the-box options in case you prefer to add it without coding.
 
+### Demo
+
+http://codepen.io/martinmoscovich/pen/MYGRoj
+
 
 ### Installation
 
