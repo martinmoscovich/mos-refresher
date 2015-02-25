@@ -25,6 +25,7 @@
     "test",
     "example",
     "package.json",
-    "lib"
+    "lib",
+    "gulpfile.js"
   ]
 }
