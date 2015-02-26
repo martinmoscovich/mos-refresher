@@ -1,8 +1,3 @@
-.mos-animate, mos-refresher.mos-refreshing, mos-refresher.mos-hiding, mos-refresher.mos-refreshing .mos-rotate, mos-refresher.mos-hiding .mos-rotate {
-  -webkit-transition: -webkit-transform .25s ease;
-  -moz-transition: -moz-transform .25s ease;
-  transition: transform .25s ease -ms-transform .25s ease; }
-
 mos-refresher {
   z-index: 999;
   position: absolute;
@@ -21,6 +16,14 @@ mos-refresher {
     transition: none; }
   mos-refresher.mos-refresh {
     opacity: 1; }
+  mos-refresher.mos-hiding, mos-refresher.mos-will-refresh {
+    -webkit-transition: -webkit-transform .25s ease;
+    -moz-transition: -moz-transform .25s ease;
+    transition: transform .25s ease; }
+  mos-refresher.mos-hiding.mos-refreshed {
+    -webkit-transition: -webkit-transform 0.15s;
+    -moz-transition: -moz-transform 0.15s;
+    transition: transform 0.15s; }
   mos-refresher.mos-hidden {
     -webkit-transition: none;
     -moz-transition: none;
@@ -31,6 +34,9 @@ mos-refresher {
     -moz-animation: rotating 0.5s linear infinite;
     animation: rotating 0.5s linear infinite; }
   mos-refresher.mos-hiding .mos-rotate {
+    -webkit-transition: -webkit-transform .25s ease;
+    -moz-transition: -moz-transform .25s ease;
+    transition: transform .25s ease;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);

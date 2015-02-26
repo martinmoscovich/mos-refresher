@@ -11,7 +11,7 @@ $rotation-time: 0.5s;
 @mixin transform_transition() {
 	-webkit-transition: -webkit-transform $transition;
 	   -moz-transition: -moz-transform $transition;
-			transition: transform $transition -ms-transform $transition;
+			transition: transform $transition;
 }
 
 @mixin no_transition() {
@@ -20,11 +20,6 @@ $rotation-time: 0.5s;
 			transition: none;
 }
 
-
-.mos-animate {
-	//-webkit-transition: -webkit-transform $transition;
-	@include transform_transition();
-}
 
 mos-refresher {
 	z-index: 999;
@@ -51,12 +46,15 @@ mos-refresher {
 		opacity: 1;
 	}
 
-
-
-	&.mos-refreshing, &.mos-hiding {
-		@extend .mos-animate;
+	&.mos-hiding, &.mos-will-refresh {
+		@include transform_transition();
 	}
 
+	&.mos-hiding.mos-refreshed {
+		-webkit-transition: -webkit-transform 0.15s;
+	   -moz-transition: -moz-transform 0.15s;
+			transition: transform 0.15s;
+	}
 	 
 	&.mos-hidden {
 		//-webkit-transition: none;
@@ -65,7 +63,6 @@ mos-refresher {
 	}
 
 	&.mos-refreshing .mos-rotate {
-		@extend .mos-animate;
 		-webkit-animation: rotating $rotation-time linear infinite;
 		   -moz-animation: rotating $rotation-time linear infinite;
 				animation: rotating $rotation-time linear infinite;
@@ -73,7 +70,7 @@ mos-refresher {
 
 
 	&.mos-hiding .mos-rotate {
-		@extend .mos-animate;
+		@include transform_transition();
 		@include rotate(0deg)
 		//-webkit-transform: rotate(0deg);
 	}
