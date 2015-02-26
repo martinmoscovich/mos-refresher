@@ -156,11 +156,13 @@ angular.module('mos.mobile.components', [])
          * Fired when the user starts dragging the scrollable up
          */
         function onDragStart(e) {
+          if(!drag.enabled) return;
           var currentTop = (scrollCtrl ? scrollCtrl.getScrollPosition().top : scrollable[0].scrollTop);
           if (currentTop <= options.maxStartY) {
             scrollOffset = (scrollCtrl ? 0: currentTop);
             if (rotableElement.length === 0) rotableElement = angular.element($element[0].querySelector('.mos-rotate'));
-            drag.enabled = true;
+            drag.active = true;
+            drag.enabled = false;
             $element.removeClass('mos-hidden');
             $element.addClass('mos-dragging');
             dispatch('onDragStart');
@@ -172,11 +174,11 @@ angular.module('mos.mobile.components', [])
          * Fired when the user releases the scrollable
          */
         function onDragEnd(e) {
-          if (!drag.enabled) return;
+          if (!drag.active) return;
           e.gesture.preventDefault();
           e.gesture.srcEvent.preventDefault();
 
-          drag.enabled = false;
+          drag.active = false;
 
           $element.removeClass('mos-dragging');
           cssTransform(rotableElement, '');
@@ -196,7 +198,7 @@ angular.module('mos.mobile.components', [])
          * Fired when the user is dragging the scrollable
          */
         function onDragDown(e) {
-          if (!drag.enabled) return;
+          if (!drag.active) return;
 
           e.gesture.preventDefault();
           e.gesture.srcEvent.preventDefault();
@@ -260,9 +262,10 @@ angular.module('mos.mobile.components', [])
         function reset(fromRefresh) {
           scope.loading = false;
           drag = {
-            enabled: false,
+            active: false,
             distance: 0,
-            mustRefresh: false
+            mustRefresh: false,
+            enabled: true
           }
           $element.removeClass('mos-refresh mos-refreshing mos-dragging');
 
