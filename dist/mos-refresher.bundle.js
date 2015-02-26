@@ -230,7 +230,7 @@ angular.module('mos.mobile.components', [])
         }
 
         function adjustOnScroll(e) {
-          scrollOffset = e.srcElement.scrollTop;
+          scrollOffset = e.target.scrollTop;
           move(options.distanceToRefresh);
         }
 
