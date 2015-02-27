@@ -167,6 +167,8 @@ angular.module('mos.mobile.components', [])
             if (rotableElement.length === 0) rotableElement = angular.element($element[0].querySelector('.mos-rotate'));
             drag.active = true;
             drag.enabled = false;
+            
+            move(0);
             $element.removeClass('mos-hidden');
             $element.addClass('mos-dragging');
             dispatch('onDragStart');
