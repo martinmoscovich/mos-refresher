@@ -154,10 +154,14 @@ angular.module('mos.mobile.components', [])
           if (currentTop <= options.maxStartY) {
             if (rotableElement.length === 0) rotableElement = angular.element($element[0].querySelector('.mos-rotate'));
             drag.enabled = true;
+
             $element.removeClass('mos-hidden');
             $element.addClass('mos-dragging');
             dispatch('onDragStart');
             elementHeight = $element[0].offsetHeight;
+
+            // Move to top
+            move(0);
           }
         }
 
