@@ -168,11 +168,13 @@ angular.module('mos.mobile.components', [])
             drag.active = true;
             drag.enabled = false;
             
-            move(0);
             $element.removeClass('mos-hidden');
             $element.addClass('mos-dragging');
             dispatch('onDragStart');
             elementHeight = $element[0].offsetHeight;
+
+            // Move to top
+            move(0);
           }
         }
 
